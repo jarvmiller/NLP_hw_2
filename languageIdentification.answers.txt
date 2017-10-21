@@ -1,0 +1,19 @@
+PART 1
+To identify the probable language of an individual sentence, I took the average over all 5-character predictions in that sentence, then found the index of the highest value in that vector. This may not be the best idea vs taking a majority vote, as there could be a few 5 char predictions that is are drastically different from the rest. This could make the average prediction be for e.g. Italian even though 40/50 predictions are for English. However, I thought this wouldn’t be something to worry about realistically in this homework so I stuck with the average.
+
+The accuracy of the language identifier on the test data was 0.99, a very high number. This makes me skeptical, but hopefully it doesn’t make you (the grader) skeptical :) 
+
+PART 2
+It was difficult to decide which sets of hyper parameters to use out of 5. I tried to do the typical (both values high, both values low, one value high and one low, the other high and low, etc) but wasn’t sure what values would be considered ‘high’ for d. I did recognize that my accuracy improved in the training then decreased then increased again, which made me think that my value of eta was too large. So I made sure to try a small value of eta for big and small values for d. I also increased d and eta, wondering if a larger ‘d’ value is compatible with a larger eta/jump value for backpropagation (this wasn’t the case when I ran the code). For the last choice, I chose d=3 just to see if it would do well as it was the number of classes to predict from.
+
+Below are the value of d and eta and their accuracy on dev after three epochs:
+(250, 0.75) : 0.319
+(25, 0.75) : 0.995
+(25, 0.05) : 0.994
+(100, 0.05) : 0.993
+(3, 0.075) : 0.976
+best params: (25, 0.75)
+
+So it seems that with d = 25, I did very well with a very large and a small value of eta.
+
+The test accuracy was also .99x, where x is a nonzero number (sry I forgot the decimal and don’t have time to run this again). But it was better than in part A.
